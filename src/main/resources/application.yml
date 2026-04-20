@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: statify
+  security:
+    oauth2:
+      client:
+        registration:
+          spotify:
+            client-id: $6aaa6abf9d654a52b6c8d6f1214c4dd9
+            client-secret: $52af5cf0aea54c9aaf8ec5c2aa540351
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://127.0.0.1:8080/callback"
+            scope: user-top-read, user-read-recently-played, user-read-private
+
+server:
+  port: 8080
