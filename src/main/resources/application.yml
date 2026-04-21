@@ -6,10 +6,10 @@ spring:
       client:
         registration:
           spotify:
-            client-id: 6aaa6abf9d654a52b6c8d6f1214c4dd9
-            client-secret: c1577c23cdc646d5a1683b6a16f80e84
+            client-id: ${SPOTIFY_CLIENT_ID}
+            client-secret: ${SPOTIFY_CLIENT_SECRET}
             authorization-grant-type: authorization_code
-            redirect-uri: "http://127.0.0.1:8080/login/oauth2/code/spotify"
+            redirect-uri: "${REDIRECT_URI:http://127.0.0.1:8080/login/oauth2/code/spotify}"
             scope: user-top-read, user-read-recently-played, user-read-private
             provider: spotify
         provider:
