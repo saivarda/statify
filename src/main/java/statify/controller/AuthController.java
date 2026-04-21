@@ -3,6 +3,7 @@ package statify.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import statify.service.SpotifyService;
 
@@ -24,12 +25,19 @@ public class AuthController {
     }
 
     @GetMapping("/dashboard")
-    public String dashboard(Authentication authentication) {
-        return spotifyService.getTopTracks(authentication);
+    public String dashboard(Authentication authentication,
+                            @RequestParam(defaultValue = "medium_term") String time_range) {
+        return spotifyService.getTopTracks(authentication, time_range);
     }
 
     @GetMapping("/top-artists")
-    public String topArtists(Authentication authentication) {
-        return spotifyService.getTopArtists(authentication);
+    public String topArtists(Authentication authentication,
+                             @RequestParam(defaultValue = "medium_term") String time_range) {
+        return spotifyService.getTopArtists(authentication, time_range);
+    }
+
+    @GetMapping("/recently-played")
+    public String recentlyPlayed(Authentication authentication) {
+        return spotifyService.getRecentlyPlayed(authentication);
     }
 }
